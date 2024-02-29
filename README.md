@@ -24,11 +24,43 @@ To configure this we can use other commands.
 To configure the services later we should also allow some other ports.
 `ufw allow 9443/tcp`
 
+To apply the changes and enable ufw use the following command
+`ufw enable`
+
+#### Docker installation
+
+First we install this package to handle the certificates
+`install -m 0755 -d /etc/apt/keyrings`
+
+To check if the download isn't hacked we download the certificate from docker
+`curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc`
+
+Change the writing permission to the certificate
+`chmod a+r /etc/apt/keyrings/docker.asc`
+
+To add the docker's packages to apt copy paste the following command
+
+> echo \
+>  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+>  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+>  tee /etc/apt/sources.list.d/docker.list > /dev/null
+> apt update
+
+Now we install docker
+`apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
+
+To test if docker is successfully installed run the hello world container
+`sudo docker run hello-world`
+
+#### MiniKube installation
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
 #### Kubernetes installation
 
 To install Kubernetes we need to install a few tools to add a registry entry to our package downloader.
 
-`apt install -y apt-transport-https ca-certificates curl`
+`apt install -y apt-transport-https ca-certificates curl gpg`
 
 To check if the download was manipulated we download the kubernetes cerificate.
 `curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg`
