@@ -3,15 +3,17 @@
 This Project helps you build a Container Envoirement with Portainer on a Kubernetes base.
 
 To start I've set up a debian 12 server on VMWare Workstation
+<br>
 
 # Setting up the server
 
 First things first we set up some extra services which are useful
 Change you user to root with `su - root`
 
-update you system with
-`apt update`
+update you system with<br>
+`apt update` <br>
 `apt upgrade`
+<br>
 
 #### Firewall installation & config
 
@@ -26,19 +28,20 @@ To configure the services later we should also allow some other ports.<br>
 
 To apply the changes and enable ufw use the following command <br>
 `ufw enable`
+<br>
 
 #### Docker installation
 
-First we install this package to handle the certificates
+First we install this package to handle the certificates<br>
 `install -m 0755 -d /etc/apt/keyrings`
 
-To check if the download isn't hacked we download the certificate from docker
+To check if the download isn't hacked we download the certificate from docker<br>
 `curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc`
 
-Change the writing permission to the certificate
+Change the writing permission to the certificate<br>
 `chmod a+r /etc/apt/keyrings/docker.asc`
 
-To add the docker's packages to apt copy paste the following command
+To add the docker's packages to apt copy paste the following command<br>
 
 > echo \
 >  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
@@ -46,10 +49,12 @@ To add the docker's packages to apt copy paste the following command
 >  tee /etc/apt/sources.list.d/docker.list > /dev/null
 > apt update
 
-Now we install docker
+<br>
+
+Now we install docker<br>
 `apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
 
-To test if docker is successfully installed run the hello world container
+To test if docker is successfully installed run the hello world container<br>
 `sudo docker run hello-world`
 
 #### MiniKube installation
