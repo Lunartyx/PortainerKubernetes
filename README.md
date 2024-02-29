@@ -15,20 +15,23 @@ update you system with
 
 #### Firewall installation & config
 
-First we install "Uncomplicated Firewall". Like the name says its a easy to use Firewall.
-`apt install ufw`
+<br>
+First we install "Uncomplicated Firewall". Like the name says its a easy to use Firewall.<br>
+`apt install ufw`<br>
+<br>
+To configure this we can use other commands.<br>
+`ufw allow ssh && ufw allow 80/tcp && ufw allow 443/tcp`<br>
 
-To configure this we can use other commands.
-`ufw allow ssh && ufw allow 80/tcp && ufw allow 443/tcp`
+To configure the services later we should also allow some other ports.<br>
+`ufw allow 9443/tcp`<br>
 
-To configure the services later we should also allow some other ports.
-`ufw allow 9443/tcp`
-
-To apply the changes and enable ufw use the following command
-`ufw enable`
+To apply the changes and enable ufw use the following command <br>
+`ufw enable`<br>
+<br>
 
 #### Docker installation
 
+<br>
 First we install this package to handle the certificates
 `install -m 0755 -d /etc/apt/keyrings`
 
