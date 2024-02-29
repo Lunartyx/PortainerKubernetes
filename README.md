@@ -3,48 +3,42 @@
 This Project helps you build a Container Envoirement with Portainer on a Kubernetes base.
 
 To start I've set up a debian 12 server on VMWare Workstation
-<br>
 
 # Setting up the server
 
 First things first we set up some extra services which are useful
 Change you user to root with `su - root`
 
-update you system with<br>
-`apt update` <br>
+update you system with
+`apt update`
 `apt upgrade`
-<br>
 
-#### Firewall installation & config
+## Firewall installation & config
 
-First we install "Uncomplicated Firewall". Like the name says its a easy to use Firewall.<br>
+First we install "Uncomplicated Firewall". Like the name says its a easy to use Firewall.
 `apt install ufw`
 
-To configure this we can use other commands.<br>
+To configure this we can use other commands.
 `ufw allow ssh && ufw allow 80/tcp && ufw allow 443/tcp`
 
-To configure the services later we should also allow some other ports.<br>
+To configure the services later we should also allow some other ports.
 `ufw allow 9443/tcp`
 
-To apply the changes and enable ufw use the following command <br>
+To apply the changes and enable ufw use the following command
 `ufw enable`
-<br>
 
-#### Docker installation
+## Docker installation
 
 First we install this package to handle the certificates
-
 `install -m 0755 -d /etc/apt/keyrings`
 
 To check if the download isn't hacked we download the certificate from docker
-
 `curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc`
 
 Change the writing permission to the certificate
-
 `chmod a+r /etc/apt/keyrings/docker.asc`
 
-To add the docker's packages to apt copy paste the following command<br>
+To add the docker's packages to apt copy paste the following command
 
 > echo \
 >  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
@@ -52,19 +46,17 @@ To add the docker's packages to apt copy paste the following command<br>
 >  tee /etc/apt/sources.list.d/docker.list > /dev/null
 > apt update
 
-<br>
-
-Now we install docker<br>
+Now we install docker
 `apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
 
-To test if docker is successfully installed run the hello world container<br>
+To test if docker is successfully installed run the hello world container
 `sudo docker run hello-world`
 
-#### MiniKube installation
+## MiniKube installation
 
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 
-#### Kubernetes installation
+## Kubernetes installation
 
 To install Kubernetes we need to install a few tools to add a registry entry to our package downloader.
 
@@ -82,4 +74,4 @@ To bring the downloader up to date with the download origin we perform this comm
 Now we finally install kubernetes
 `apt install -y kubectl`
 
-#### Portainer installation
+## Portainer installation
