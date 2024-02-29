@@ -32,13 +32,16 @@ To apply the changes and enable ufw use the following command <br>
 
 #### Docker installation
 
-First we install this package to handle the certificates<br>
+First we install this package to handle the certificates
+
 `install -m 0755 -d /etc/apt/keyrings`
 
-To check if the download isn't hacked we download the certificate from docker<br>
+To check if the download isn't hacked we download the certificate from docker
+
 `curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc`
 
-Change the writing permission to the certificate<br>
+Change the writing permission to the certificate
+
 `chmod a+r /etc/apt/keyrings/docker.asc`
 
 To add the docker's packages to apt copy paste the following command<br>
