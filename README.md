@@ -34,7 +34,7 @@ To apply the changes and enable ufw use the following command<br />
 
 <br  />
 
-## Docker installation
+## Docker Swarm installation
 
 First we install this packages to handle the certificates<br />
 `apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common`
@@ -54,31 +54,20 @@ Now we install docker<br />
 To test if docker is successfully installed run the hello world container<br />
 `docker run hello-world`
 
-<br  />
-
-## MiniKube installation
-
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-
-<br  />
-
-## Kubectl installation
-
-To install Kubectl we need to install a few tools to add a registry entry to our package downloader.<br />
-`apt install -y apt-transport-https ca-certificates curl gpg`
-
-To check if the download was manipulated we download the kubectl cerificate.<br />
-`curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg`
-
-If someone already tried once to install kubectl we delete any old content
-`echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list`
-
-To bring the downloader up to date with the download origin we perform this commands again<br />
-`apt update && apt upgrade`
-
-Now we finally install kubectl
-`apt install -y kubectl`
+After the docker installation we create a swarm.<br />
+`docker swarm init --advertise-addr <YOUR IP ADDRESS>`
 
 <br  />
 
 ## Portainer installation
+
+To install portainer to a kubernetes container we use this command
+`curl -L https://downloads.portainer.io/ce2-19/portainer-agent-stack.yml -o portainer-agent-stack.yml`
+
+docker stack deploy -c portainer-agent-stack.yml portainer
+
+You will need to wait about a minute until the container is fully up. After that you can access the Webinterface with your ip.
+
+`https://<YOUR IP ADDRESS>:9443/#!/init/admin`
+
+## Portainer config
