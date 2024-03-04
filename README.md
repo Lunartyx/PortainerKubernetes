@@ -84,3 +84,19 @@ Now there are different ways to install the envoirement. I prefere the socket.
 So we click on socket
 
 We can find a command there to set up a new image. we copy this in a notepad and edit some parameters
+
+> --name portainer_agent
+
+Im changing it to `swarm_public`
+optionally you can change the port too
+
+> -p 9001:9001/tcp
+
+But i leave it as it is.
+
+We can copy paste the whole command on our server and run it
+
+On our web UI we now insert the name and envoirement address
+
+> swarm_public
+> <YOUR IP ADDRESS>
