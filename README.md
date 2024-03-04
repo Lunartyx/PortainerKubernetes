@@ -21,7 +21,7 @@ update you system with<br />
 ## Firewall installation & config
 
 First we install "Uncomplicated Firewall". Like the name says its a easy to use Firewall.<br />
-`apt install ufw`
+`apt install -y ufw`
 
 To configure this we can use other commands.<br />
 `ufw allow ssh && ufw allow 80/tcp && ufw allow 443/tcp`
@@ -37,7 +37,7 @@ To apply the changes and enable ufw use the following command<br />
 ## Docker Swarm installation
 
 First we install this packages to handle the certificates<br />
-`apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common`
+`apt install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common`
 
 To check if the download isn't hacked we download the certificate from docker<br />
 `curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -`
@@ -49,7 +49,7 @@ To add the docker's packages to apt copy paste the following command<br />
 `sudo apt update`
 
 Now we install docker<br />
-`apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
+`apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
 
 To test if docker is successfully installed run the hello world container<br />
 `docker run hello-world`
@@ -61,13 +61,26 @@ After the docker installation we create a swarm.<br />
 
 ## Portainer installation
 
-To install portainer to a kubernetes container we use this command
+To install portainer to our cluster we use this command
 `curl -L https://downloads.portainer.io/ce2-19/portainer-agent-stack.yml -o portainer-agent-stack.yml`
 
-docker stack deploy -c portainer-agent-stack.yml portainer
+`docker stack deploy -c portainer-agent-stack.yml portainer`
 
 You will need to wait about a minute until the container is fully up. After that you can access the Webinterface with your ip.
 
 `https://<YOUR IP ADDRESS>:9443/#!/init/admin`
 
+After you set you password you may be asked to restart your container. To do so list you containers and restart it.
+`docker container ls`
+Important take the portainer-ce container
+`docker restart <container ID>`
+
 ## Portainer config
+
+Now we create a new envoirement for our containers.
+We go over to envoirements and click on Docker Swarm, then start Wizard.
+
+Now there are different ways to install the envoirement. I prefere the socket.
+So we click on socket
+
+We can find a command there to set up a new image. we copy this in a notepad and edit some parameters
