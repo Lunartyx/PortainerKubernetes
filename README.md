@@ -1,6 +1,6 @@
 # Webapplication with loadbalancer on a Container Env
 
-This Project helps you build a Container Envoirement with Portainer on a Kubernetes base.
+This Project helps you build a Container environment with Portainer on a Kubernetes base.
 
 To start I've set up a debian 12 server on VMWare Workstation
 
@@ -77,11 +77,11 @@ Important take the portainer-ce container
 
 ## Portainer config
 
-Now we create a new envoirement for our containers.
-We go over to envoirements and click on Docker Swarm, then start Wizard.
+Now we create a new environment for our containers.
+We go over to environments and click on Docker Swarm, then start Wizard.
 
-Now there are different ways to install the envoirement. I prefere the socket.
-So we click on socket
+Now there are different ways to install the environment. I prefer the agent.
+So we click on agent
 
 We can find a command there to set up a new image. we copy this in a notepad and edit some parameters
 
@@ -96,7 +96,7 @@ But i leave it as it is.
 
 We can copy paste the whole command on our server and run it
 
-On our web UI we now insert the name and envoirement address
+On our web UI we now insert the name and environment address
 
 > swarm_public
 > <YOUR IP ADDRESS>
