@@ -3,7 +3,6 @@
 This Project helps you build a Container environment with Portainer on a Kubernetes base.
 
 To start I've set up a debian 12 server on VMWare Workstation
-
 <br  />
 
 # Setting up the server
@@ -30,7 +29,6 @@ To configure the services later we should also allow some other ports.<br />
 
 To apply the changes and enable ufw use the following command<br />
 `ufw enable`
-
 <br  />
 
 # Setting up the base Infrastructure
@@ -73,7 +71,8 @@ You will need to wait about a minute until the container is fully up. After that
 After you set you password you may be asked to restart your container. To do so list you containers and restart it.<br />
 `docker container ls`<br />
 Important take the portainer-ce container<br />
-`docker restart <container ID>`<br />
+`docker restart <container ID>`
+<br />
 
 ## Portainer config
 
@@ -107,6 +106,7 @@ We click on connect and the work is done. You successfully set up a portainer en
 
 What whould a infrastructure be without some services?
 I will explane here how to set up a microservice environment with a reverse proxy, a loadbalancer, a frontent, a backend, an api server and a monitoring tool
+<br />
 
 ## NGINX Reverse Proxy Manager
 
