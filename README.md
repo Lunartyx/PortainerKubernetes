@@ -2,7 +2,7 @@
 
 This is a full tutorial to set up a Portainer Envoirenment with a company Setup
 
-# Table of Contents
+## Table of Contents <br> =================
 
 - [Server Installation 🐧](#install-a-container-env-to-launch-microservices-)
 - [Server Setup 💻](#setting-up-the-server-)
