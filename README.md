@@ -15,7 +15,6 @@ Change you user to root with <br />
 update you system with<br />
 `apt update` <br />
 `apt upgrade`
-
 <br  />
 
 ## Firewall installation & config
@@ -58,7 +57,6 @@ To test if docker is successfully installed run the hello world container<br />
 
 After the docker installation we create a swarm.<br />
 `docker swarm init --advertise-addr <YOUR IP ADDRESS>`
-
 <br  />
 
 ## Portainer installation
