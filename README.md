@@ -1,11 +1,17 @@
-# Install a Container Env to launch microservices
+# PortainerSwarm
+
+This is a full tutorial to set up a Portainer Envoirenment with a company Setup
+
+[TOC]
+
+# Install a Container Env to launch microservices 🐧
 
 This Project helps you build a Container environment with Portainer on a Kubernetes base.
 
 To start I've set up a debian 12 server on VMWare Workstation
 <br  />
 
-# Setting up the server
+# Setting up the server 💻
 
 First things first we set up some extra services which are useful
 Change you user to root with <br />
@@ -16,7 +22,7 @@ update you system with<br />
 `apt upgrade`
 <br  />
 
-## Firewall installation & config
+## Firewall installation & config 🧱
 
 First we install "Uncomplicated Firewall". Like the name says its a easy to use Firewall.<br />
 `apt install -y ufw`
@@ -31,9 +37,9 @@ To apply the changes and enable ufw use the following command<br />
 `ufw enable`
 <br  />
 
-# Setting up the base Infrastructure
+# Setting up the base Infrastructure 🏠
 
-## Docker Swarm installation
+## Docker Swarm installation 🐳
 
 First we install this packages to handle the certificates<br />
 `apt install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common`
@@ -57,7 +63,7 @@ After the docker installation we create a swarm.<br />
 `docker swarm init --advertise-addr <YOUR IP ADDRESS>`
 <br  />
 
-## Portainer installation
+## Portainer installation 🏗️
 
 To install portainer to our cluster we use this command<br />
 `curl -L https://downloads.portainer.io/ce2-19/portainer-agent-stack.yml -o portainer-agent-stack.yml`<br />
@@ -74,7 +80,7 @@ Important take the portainer-ce container<br />
 `docker restart <container ID>`
 <br />
 
-## Portainer config
+## Portainer config ⚙️
 
 Now we create a new environment for our containers.
 We go over to environments and click on Docker Swarm, then start Wizard.
@@ -102,13 +108,13 @@ On our web UI we now insert the name and environment address<br />
 We click on connect and the work is done. You successfully set up a portainer environment!
 <br />
 
-# Microservices
+# Microservices 📲
 
 What whould a infrastructure be without some services?
 I will explane here how to set up a microservice environment with a reverse proxy, a loadbalancer, a frontent, a backend, an api server and a monitoring tool
 <br />
 
-## NGINX Reverse Proxy Manager
+## NGINX Reverse Proxy Manager 📯
 
 Now we set up a reverse proxy.
 To do so we go over to our swarm_public environment.
