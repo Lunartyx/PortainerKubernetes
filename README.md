@@ -1,4 +1,4 @@
-# Webapplication with loadbalancer on a Container Env
+# Install a Container Env to launch microservices
 
 This Project helps you build a Container environment with Portainer on a Kubernetes base.
 
@@ -33,6 +33,8 @@ To apply the changes and enable ufw use the following command<br />
 `ufw enable`
 
 <br  />
+
+# Setting up the base Infrastructure
 
 ## Docker Swarm installation
 
@@ -103,4 +105,33 @@ On our web UI we now insert the name and environment address
 
 We click on connect and the work is done. You successfully set up a portainer environment!
 
-#### Stuff
+# Microservices
+
+What whould a infrastructure be without some services?
+I will explane here how to set up a microservice environment with a reverse proxy, a loadbalancer, a frontent, a backend, an api server and a monitoring tool
+
+## NGINX Reverse Proxy Manager
+
+Now we set up a reverse proxy.
+To do so we go over to our swarm_public environment.
+
+First we set up 2 volumes. For that we go to volumes and add a volume.
+This is my naming:
+
+> reverseproxy_certs
+> reverseproxy_data
+
+Now we create the template
+
+Under app template to custom template.
+We add a custom template.
+
+Here are the parameters i've used.
+
+> Title: nginx_reverse_proxy_manager
+> Descr.: nginx_reverse_proxy_manager
+> Ico.URL: https://nginxproxymanager.com/icon.png
+> Platform: Linux
+> Type: Swarm
+
+As the docker compose file i used ./images/compose/nginx_reverse_proxy_manager.docker-compose
