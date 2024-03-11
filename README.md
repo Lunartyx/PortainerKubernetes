@@ -46,7 +46,7 @@ Change the writing permission to the certificate<br />
 `add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"`
 
 To add the docker's packages to apt copy paste the following command<br />
-`sudo apt update`
+`apt update`
 
 Now we install docker<br />
 `apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
