@@ -100,3 +100,7 @@ On our web UI we now insert the name and environment address
 
 > swarm_public
 > <YOUR IP ADDRESS>
+
+We click on connect and the work is done. You successfully set up a portainer environment!
+
+#### Stuff

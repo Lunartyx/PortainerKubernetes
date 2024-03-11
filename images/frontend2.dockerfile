@@ -11,5 +11,5 @@ RUN git clone https://somelink.com/RepositoryXY /app
 # Set the working directory
 WORKDIR /app/web/frontend/
 
-CMD ["php", "site2.html"]
+CMD ["php", "site1.html"]
 
