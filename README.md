@@ -1,10 +1,15 @@
-# PortainerSwarm
+<h1 align="center">
+  <br>
+  <a href="https://github.com/lunartyx"><img src="./assets/img/OIG3-modified.png" width="400" alt="Portainer & Swarm"></a>
+  <br>
+  Portainer & Swarm
+  <br>
+</h1>
 
-This is a full tutorial to set up a Portainer Envoirenment with a company Setup
+<p align="center">This is a full tutorial to set up a Portainer Envoirenment with a company Setup</p>
 
-<p align="center">
-    <img src="./assets/img/OIG3-modified.png" alt="ContaierCloud" width="400"/>)
-</p>
+<br>
+
 #### Table of Contents <br> =================
 
 - [Server Installation 🐧](#install-a-container-env-to-launch-microservices-)
