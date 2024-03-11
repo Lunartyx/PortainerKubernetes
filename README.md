@@ -2,7 +2,17 @@
 
 This is a full tutorial to set up a Portainer Envoirenment with a company Setup
 
-[TOC]
+# Table of Contents
+
+- [Server Installation 🐧](#install-a-container-env-to-launch-microservices-)
+- [Server Setup 💻](#setting-up-the-server-)
+  - [Firewall 🧱](#firewall-installation--config-)
+- [Base Infrastructure 🏠](#setting-up-the-base-infrastructure-)
+  - [Docker Swarm Installation 🐳](docker-swarm-installation-)
+  - [Portainer Installation 🏗️](#portainer-installation-️)
+  - [Portainer Configuration ⚙️](portainer-config-️)
+- [Microservices 📲](microservices-)
+  - [Reverse Proxy Manager 📯](nginx-reverse-proxy-manager-)
 
 # Install a Container Env to launch microservices 🐧
 
