@@ -63,19 +63,19 @@ After the docker installation we create a swarm.<br />
 
 ## Portainer installation
 
-To install portainer to our cluster we use this command
-`curl -L https://downloads.portainer.io/ce2-19/portainer-agent-stack.yml -o portainer-agent-stack.yml`
+To install portainer to our cluster we use this command<br />
+`curl -L https://downloads.portainer.io/ce2-19/portainer-agent-stack.yml -o portainer-agent-stack.yml`<br />
 
 `docker stack deploy -c portainer-agent-stack.yml portainer`
 
-You will need to wait about a minute until the container is fully up. After that you can access the Webinterface with your ip.
+You will need to wait about a minute until the container is fully up. After that you can access the Webinterface with your ip.<br />
 
 `https://<YOUR IP ADDRESS>:9443/#!/init/admin`
 
-After you set you password you may be asked to restart your container. To do so list you containers and restart it.
-`docker container ls`
-Important take the portainer-ce container
-`docker restart <container ID>`
+After you set you password you may be asked to restart your container. To do so list you containers and restart it.<br />
+`docker container ls`<br />
+Important take the portainer-ce container<br />
+`docker restart <container ID>`<br />
 
 ## Portainer config
 
@@ -85,25 +85,25 @@ We go over to environments and click on Docker Swarm, then start Wizard.
 Now there are different ways to install the environment. I prefer the agent.
 So we click on agent
 
-We can find a command there to set up a new image. we copy this in a notepad and edit some parameters
+We can find a command there to set up a new image. we copy this in a notepad and edit some parameters<br />
 
-> --name portainer_agent
+> --name portainer_agent<br />
 
-Im changing it to `swarm_public`
+Im changing it to `swarm_public`<br />
 optionally you can change the port too
 
-> -p 9001:9001/tcp
+> -p 9001:9001/tcp<br />
 
-But i leave it as it is.
+But i leave it as it is.<br />
 
-We can copy paste the whole command on our server and run it
+We can copy paste the whole command on our server and run it<br />
 
-On our web UI we now insert the name and environment address
+On our web UI we now insert the name and environment address<br />
 
-> swarm_public
-> <YOUR IP ADDRESS>
+> swarm_public<br /> > <YOUR IP ADDRESS><br />
 
 We click on connect and the work is done. You successfully set up a portainer environment!
+<br />
 
 # Microservices
 
@@ -118,8 +118,8 @@ To do so we go over to our swarm_public environment.
 First we set up 2 volumes. For that we go to volumes and add a volume.
 This is my naming:
 
-> reverseproxy_certs
-> reverseproxy_data
+> reverseproxy_certs<br />
+> reverseproxy_data<br />
 
 Now we create the template
 
@@ -128,10 +128,10 @@ We add a custom template.
 
 Here are the parameters i've used.
 
-> Title: nginx_reverse_proxy_manager
-> Descr.: nginx_reverse_proxy_manager
-> Ico.URL: https://nginxproxymanager.com/icon.png
-> Platform: Linux
-> Type: Swarm
+> Title: nginx_reverse_proxy_manager<br />
+> Descr.: nginx_reverse_proxy_manager<br />
+> Ico.URL: https://nginxproxymanager.com/icon.png<br />
+> Platform: Linux<br />
+> Type: Swarm<br />
 
 As the docker compose file i used ./images/compose/nginx_reverse_proxy_manager.docker-compose
