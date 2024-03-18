@@ -156,4 +156,18 @@ Here are the parameters i've used.
 > Platform: Linux<br />
 > Type: Swarm<br />
 
-As the docker compose file i used ./images/compose/nginx_reverse_proxy_manager.docker-compose
+As the docker compose file i used [this image](./images/compose/nginx_reverse_proxy_manager.docker-compose)
+
+After you deployed it you need to go to services in the portainer menu.
+There you go over to you nginx service and scroll down to mounts.
+
+Change the type of those mounts to "Volume" and for the target "/data" you choose your data volume.
+As well with the lets encrypt target change this one to your certs volume.
+
+Finally scroll up and click apply changes.
+
+## NGINX Load Balancer
+
+## NodeJS Web-Server
+
+## NodeJS
