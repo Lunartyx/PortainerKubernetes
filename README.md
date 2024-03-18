@@ -165,9 +165,14 @@ Change the type of those mounts to "Volume" and for the target "/data" you choos
 As well with the lets encrypt target change this one to your certs volume.
 
 Finally scroll up and click apply changes.
+<br />
+
+## Registry
 
 ## NGINX Load Balancer
 
 ## NodeJS Web-Server
 
-## NodeJS
+## NodeJS API
+
+##
