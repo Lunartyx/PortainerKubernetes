@@ -177,6 +177,22 @@ Finally scroll up and click apply changes.
 
 ## Registry
 
+Here was thought that i show you how to set up a local registry. Sadly i got an error while setting it up.
+
+BUT! i got an alternative through GitLab. I ran in some issues with GitHub so i created an alternative repository in gitlab. As soon as i have a fix for either of the problems ill update this.
+
+So how do you login to your GitLab.
+First i went over to [GitLab](www.gitlab.com)<br />
+
+Here under your profile you find Access Tokens.
+Create a new one and choose for the rights just everything (i did this and it worked)<br />
+
+Copy it and go over to your server. Now insert 2 commands:<br />
+
+`TOKEN=<yourToken>`<br />
+`docker login registry.gitlab.com -u <yourUserName> --password-stdin <<<$TOKEN`<br />
+<br />
+
 ## NGINX Load Balancer
 
 ## NodeJS Web-Server
