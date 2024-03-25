@@ -200,3 +200,15 @@ Copy it and go over to your server. Now insert 2 commands:<br />
 ## NodeJS API
 
 ##
+
+# Images
+
+## Build and Push
+
+Important! You must have done [THIS](registry) step to go further on.
+
+First be sure your docker file is named correctly (Dockerfile) and in a single folder.
+
+`docker build -t registry.gitlab.com/urUserName/YourRepository .`
+
+`docker push registry.gitlab.com/urUserName/YourRepository`
