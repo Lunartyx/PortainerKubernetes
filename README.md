@@ -126,6 +126,14 @@ On our web UI we now insert the name and environment address<br />
 We click on connect and the work is done. You successfully set up a portainer environment!
 <br />
 
+## SSL - TLS Certificate 📜
+
+To "Securely" access our envoirement, we need a SSL certificate. Due testing purposes i've generated one on this website.
+
+[regery.com EXTERNAL WEBSITE!!!](https://regery.com/en/security/ssl-tools/self-signed-certificate-generator)
+
+<br />
+
 # Microservices 📲
 
 What whould a infrastructure be without some services?

@@ -13,5 +13,3 @@ RUN git clone https://github.com/Lunartyx/PortainerKubernetes.git /tmp/repositor
 # Clean up
 RUN rm -rf /tmp/repository
 
-# Expose port
-EXPOSE 80
