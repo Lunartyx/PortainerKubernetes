@@ -182,7 +182,7 @@ Here was thought that i show you how to set up a local registry. Sadly i got an 
 BUT! i got an alternative through GitLab. I ran in some issues with GitHub so i created an alternative repository in gitlab. As soon as i have a fix for either of the problems ill update this.
 
 So how do you login to your GitLab.
-First i went over to [GitLab](www.gitlab.com)<br />
+First i went over to [GitLab](https://gitlab.com/)<br />
 
 Here under your profile you find Access Tokens.
 Create a new one and choose for the rights just everything (i did this and it worked)<br />
@@ -209,6 +209,6 @@ Important! You must have done [THIS](registry) step to go further on.
 
 First be sure your docker file is named correctly (Dockerfile) and in a single folder.
 
-`docker build -t registry.gitlab.com/urUserName/YourRepository .`
+`docker build -t registry.gitlab.com/urUserName/YourRepository/YourImageName .`
 
-`docker push registry.gitlab.com/urUserName/YourRepository`
+`docker push registry.gitlab.com/urUserName/YourRepository/YourImageName`
