@@ -212,3 +212,11 @@ First be sure your docker file is named correctly (Dockerfile) and in a single f
 `docker build -t registry.gitlab.com/urUserName/YourRepository/YourImageName .`
 
 `docker push registry.gitlab.com/urUserName/YourRepository/YourImageName`
+
+# Frontend
+
+## Error solution
+
+If you try to use `npm run dev` and it fails with `Error: listen EACCES: permission denied ::1:3000` try this command.
+
+`sudo npm install -g --unsafe-perm=true --allow-root`
