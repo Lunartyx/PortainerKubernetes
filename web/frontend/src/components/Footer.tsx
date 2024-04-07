@@ -1,12 +1,10 @@
 const MainHeader = () => {
     return (
         <>
-            <section>
-                <div className="my-8 bg-gray-400">
-                    <p className="font-p text-2xl text-center">Copyright CPUTTAG 2024</p>
-                </div>
-            </section>
-
+            <div className="bg-gray-400 mt-16">
+                <p className="font-p text-2xl text-center">Copyright CPUTTAG</p>
+                <p className="font-p text-2xl text-center">2024</p>
+            </div>
         </>
     )
 }

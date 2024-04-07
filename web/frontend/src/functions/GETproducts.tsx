@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ProductCard from '../components/ProductCard';
 
+const PORT = "190";
+const IP_ADDRESS = "localhost";
+const API_SERVER = IP_ADDRESS + ":" + PORT;
+
+// Define the Product interface
 interface Product {
     productId: string;
     productName: string;
@@ -9,57 +15,41 @@ interface Product {
 }
 
 const GETproducts: React.FC = () => {
-    const [productIds, setProductIds] = useState<string[]>([]);
-    const [productDetails, setProductDetails] = useState<Product | null>(null); // Use the Product interface
-
+    const [products, setProducts] = useState<Product[]>([]); // Use Product interface
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        // Fetch product IDs
-        axios.get('/product-ids')
-            .then(response => {
-                setProductIds(response.data);
+        axios.get(`http://${API_SERVER}/product-ids`) // Change the URL to your backend API URL
+            .then(async response => {
+                const productIds: string[] = response.data;
+                const productDataPromises = productIds.map(productId =>
+                    axios.get(`http://${API_SERVER}/products/${productId}`)
+                );
+                const productDataResponses = await Promise.all(productDataPromises);
+                const productsData = productDataResponses.map(response => response.data);
+                setProducts(productsData);
+                setLoading(false);
             })
             .catch(error => {
-                console.error('Error fetching product IDs:', error);
+                setError('Error fetching product IDs: ' + error);
+                setLoading(false);
             });
-    }, []); // Run once on component mount
-
-    const fetchProductDetails = (productId: string) => {
-        // Fetch product details by ID
-        axios.get(`/products/${productId}`)
-            .then(response => {
-                setProductDetails(response.data);
-            })
-            .catch(error => {
-                console.error(`Error fetching product details for ID ${productId}:`, error);
-            });
-    };
+    }, []);
 
     return (
-        <div>
-            {/* Render product IDs */}
-            <h2>Product IDs:</h2>
-            <ul>
-                {productIds.map(productId => (
-                    <li key={productId}>
-                        {productId}
-                        {/* Button to fetch product details */}
-                        <button onClick={() => fetchProductDetails(productId)}>View Details</button>
-                    </li>
-                ))}
-            </ul>
-
-            {/* Render product details */}
-            {productDetails && (
-                <div>
-                    <h2>Product Details:</h2>
-                    <p>Product Name: {productDetails.productName}</p>
-                    <p>Product Price: {productDetails.productPrice}</p>
-                    <p>Product Image: {productDetails.productPicture}</p>
-                    {/* Add more fields as needed */}
-                </div>
-            )}
-        </div>
+        <>
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
+            {products.map(product => (
+                <ProductCard
+                    key={product.productId}
+                    productName={product.productName}
+                    productPrice={product.productPrice}
+                    productPicture={product.productPicture}
+                />
+            ))}
+        </>
     );
 };
 

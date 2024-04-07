@@ -1,5 +1,3 @@
-// server.js
-
 const express = require('express');
 const mysql = require('mysql2/promise');
 
@@ -8,6 +6,14 @@ const PORT = process.env.PORT || 190;
 
 // Middleware
 app.use(express.json());
+
+// Enable CORS middleware
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Allow specific HTTP methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow specific headers
+  next();
+});
 
 // Connect to MariaDB
 const pool = mysql.createPool({
