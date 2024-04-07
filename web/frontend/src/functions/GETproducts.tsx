@@ -3,7 +3,7 @@ import axios from 'axios';
 import ProductCard from '../components/ProductCard';
 
 const PORT = "190";
-const IP_ADDRESS = "localhost";
+const IP_ADDRESS = "192.168.134.131";
 const API_SERVER = IP_ADDRESS + ":" + PORT;
 
 // Define the Product interface
