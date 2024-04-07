@@ -23,5 +23,5 @@ WORKDIR /api
 # Install dependencies
 RUN npm install
 
-# Run base configuration
-RUN npm run start
+# Run service
+CMD [ "npm", "run", "start" ]
