@@ -4,3 +4,9 @@ git clone https://github.com/Lunartyx/PortainerKubernetes.git /tmp/repository &&
 
 # Clean up
 rm -rf /tmp/repository
+
+# Install dependencies
+npm install
+
+# Start the app
+npm run start
