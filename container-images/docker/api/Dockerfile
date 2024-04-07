@@ -13,8 +13,5 @@ COPY entrypoint.sh /entrypoint/entrypoint.sh
 # Install Git
 RUN apt-get update && apt-get install -y git
 
-# Change to app
-WORKDIR /api
-
 # Run base configuration
 CMD ["entrypoint.sh"]
