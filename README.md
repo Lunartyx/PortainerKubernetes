@@ -21,18 +21,23 @@
   - [Portainer Configuration ⚙️](portainer-config-️)
 - [Microservices 📲](microservices-)
   - [Reverse Proxy Manager 📯](nginx-reverse-proxy-manager-)
+  - [Registry 🗄️](registry)
+  - [Webserver-NodeJS 🖼️](nodejs-web-server)
+  - [API 🔗](nodejs-api)
+  - [Database 💾](database)
 
 # Important!
 
 If you copied my OVM image please consider using those endpoints and ports cause they slightly disagree to how ive done it.
-
-Portainer: https://192.168.134.131:9443 User: admin PW: abc.1234
-App: http://192.168.134.131:80 -> http://192.168.134.131:180
-API: http://192.168.134.131:190
-DB: 192.168.134.131:3306 User: admin PW: password
-NGINX Reverse Proxy: http://192.168.134.131:81 User: admin@example.com PW: abc.1234
-Monitoring: http://192.168.134.131:3000 User: admin PW: abc.1234
-Registry Endpoint (No GUI): 192.168.134.131:5001/<IMAGENAME>
+<br />
+Portainer: https://192.168.134.131:9443 User: admin PW: abc.1234<br />
+App: http://192.168.134.131:80 -> http://192.168.134.131:180<br />
+API: http://192.168.134.131:190<br />
+DB: 192.168.134.131:3306 User: admin PW: password<br />
+NGINX Reverse Proxy: http://192.168.134.131:81 User: admin@example.com PW: abc.1234<br />
+Monitoring: http://192.168.134.131:3000 User: admin PW: abc.1234<br />
+Registry Endpoint (No GUI): 192.168.134.131:5001/<IMAGENAME><br />
+<br />
 
 # Planning
 
@@ -210,9 +215,7 @@ If the file doesnt exist create it.
 
 and enter
 
-`{
-  "insecure-registries": ["<YOURIPADDRESS>:5000"]
-}`
+`{ "insecure-registries": ["<YOURIPADDRESS>:5000"] }`
 
 So now we go to portainer and head to app-templates
 
@@ -224,11 +227,12 @@ Also enter the ip and port to docker settings/Registries so you can pull the ima
 
 to build and push those are the commands
 
-docker build -t <YOURIPADDRESS>:5000/<IMAGENAME> .
+`docker build -t <YOURIPADDRESS>:5000/<IMAGENAME> .`<br />
 
-docker push <YOURIPADDRESS>:5000/<IMAGENAME>
+`docker push <YOURIPADDRESS>:5000/<IMAGENAME>`
 
 Also add the ip/port to portainer under Registry and add it as custom registry.
+<br />
 
 #### Alternative
 
