@@ -22,6 +22,23 @@
 - [Microservices 📲](microservices-)
   - [Reverse Proxy Manager 📯](nginx-reverse-proxy-manager-)
 
+# Important!
+
+If you copied my OVM image please consider using those endpoints and ports cause they slightly disagree to how ive done it.
+
+Portainer: https://192.168.134.131:9443 User: admin PW: abc.1234
+App: http://192.168.134.131:80 -> http://192.168.134.131:180
+API: http://192.168.134.131:190
+DB: 192.168.134.131:3306 User: admin PW: password
+NGINX Reverse Proxy: http://192.168.134.131:81 User: admin@example.com PW: abc.1234
+Monitoring: http://192.168.134.131:3000 User: admin PW: abc.1234
+Registry Endpoint (No GUI): 192.168.134.131:5001/<IMAGENAME>
+
+# Planning
+
+This is how it should look at the end:
+[netplan.png](/assets/planning/Netplan.png)
+
 # Install a Container Env to launch microservices 🐧
 
 This Project helps you build a Container environment with Portainer on a Kubernetes base.
@@ -90,7 +107,7 @@ To install portainer to our cluster we use this command<br />
 
 You will need to wait about a minute until the container is fully up. After that you can access the Webinterface with your ip.<br />
 
-`https://<YOUR IP ADDRESS>:9443/#!/init/admin`
+`https://<YOUR IP ADDRESS>:9443`
 
 After you set you password you may be asked to restart your container. To do so list you containers and restart it.<br />
 `docker container ls`<br />
@@ -126,7 +143,7 @@ On our web UI we now insert the name and environment address<br />
 We click on connect and the work is done. You successfully set up a portainer environment!
 <br />
 
-## SSL - TLS Certificate 📜
+## <p style="color: red;"> DEPRECATED </p>SSL - TLS Certificate 📜
 
 To "Securely" access our envoirement, we need a SSL certificate. Due testing purposes i've generated one on this website.
 
@@ -173,13 +190,49 @@ Change the type of those mounts to "Volume" and for the target "/data" you choos
 As well with the lets encrypt target change this one to your certs volume.
 
 Finally scroll up and click apply changes.
+
+We configure something to use later.
+Go to `http://<YOURIPADDRESS>:81`
+
+There we go to settings and change default route to your ip on port 180.
+
+If you use a loadbalancer point it to the loadbalancer's IP/Port
 <br />
 
 ## Registry
 
-Here was thought that i show you how to set up a local registry. Sadly i got an error while setting it up.
+To setup a registry we have to setup 2 simple things.
 
-BUT! i got an alternative through GitLab. I ran in some issues with GitHub so i created an alternative repository in gitlab. As soon as i have a fix for either of the problems ill update this.
+First connect to the server and edit the docker daemon file and restart docker.
+If the file doesnt exist create it.
+
+`nano /etc/docker/daemon.json`
+
+and enter
+
+`{
+  "insecure-registries": ["<YOURIPADDRESS>:5000"]
+}`
+
+So now we go to portainer and head to app-templates
+
+There we filter for Container.
+
+There is a Registry template which we select. Enter a name and deploy it.
+
+Also enter the ip and port to docker settings/Registries so you can pull the images from there
+
+to build and push those are the commands
+
+docker build -t <YOURIPADDRESS>:5000/<IMAGENAME> .
+
+docker push <YOURIPADDRESS>:5000/<IMAGENAME>
+
+Also add the ip/port to portainer under Registry and add it as custom registry.
+
+#### Alternative
+
+I got an alternative through GitLab. I ran in some issues with GitHub so i created an alternative repository in gitlab. As soon as i have a fix for either of the problems ill update this.
 
 So how do you login to your GitLab.
 First i went over to [GitLab](https://gitlab.com/)<br />
@@ -193,13 +246,23 @@ Copy it and go over to your server. Now insert 2 commands:<br />
 `docker login registry.gitlab.com -u <yourUserName> --password-stdin <<<$TOKEN`<br />
 <br />
 
-## NGINX Load Balancer
-
 ## NodeJS Web-Server
+
+As a webserver i used the Vite + React Framework and wrote some simple components and functions.
+
+You can just copy the /web/frontend folder and in this one use <br />
+`npm run start`
+<br />
 
 ## NodeJS API
 
-##
+## Database
+
+Here i got you a mariadb.yml file in this repo which you can copy paste to a new custom app template.
+
+We do nearly the same as in NGINX loadbalancer "how to" just use the mariadb.yml
+
+You can find this compose file in /container-images/compose/mariadb.yml
 
 # Images
 
@@ -217,6 +280,6 @@ First be sure your docker file is named correctly (Dockerfile) and in a single f
 
 ## Error solution
 
-If you try to use `npm run dev` and it fails with `Error: listen EACCES: permission denied ::1:3000` try this command.
+If you try to use `npm run dev`/`npm run start` and it fails with `Error: listen EACCES: permission denied ::1:3000` try this command.
 
 `sudo npm install -g --unsafe-perm=true --allow-root`
