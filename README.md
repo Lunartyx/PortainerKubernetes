@@ -10,7 +10,7 @@
 
 <br>
 
-#### Table of Contents <br> =================
+#### Table of Contents <br> ==================
 
 - [Server Installation 🐧](#install-a-container-env-to-launch-microservices-)
 - [Server Setup 💻](#setting-up-the-server-)
