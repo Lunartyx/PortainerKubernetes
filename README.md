@@ -163,6 +163,26 @@ What whould a infrastructure be without some services?
 I will explane here how to set up a microservice environment with a reverse proxy, a loadbalancer, a frontent, a backend, an api server and a monitoring tool
 <br />
 
+## Error solution
+
+If you have a error on app templates and cannot see any templates make those changes:
+<br />
+On your server edit or create the file if it doesnt exist.
+<br />
+
+`nano /etc/docker/daemon.json`
+
+<br />
+and enter this dns config<br />
+
+```
+{
+  "dns": ["8.8.8.8", "8.8.4.4"]
+}
+```
+
+<br />
+
 ## NGINX Reverse Proxy Manager 📯
 
 Now we set up a reverse proxy.
